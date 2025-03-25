@@ -29,12 +29,12 @@ def check_password():
     # FIXME: to be implemented
     if len(pw) < 8:
         return flask.jsonify({"valid": False, "reason": "Password too short"}), 400
-    if not len(re.findall(r"[A-Z]", pw)) < 2:
+    if len(re.findall(r"[A-Z]", pw)) < 2:
         if re.search(r"[A-Z]", pw):
             return flask.jsonify({"valid": False, "reason": "Not enough uppercase letter"}), 400
         else:
              return flask.jsonify({"valid": False, "reason": "Missing uppercase letter"}), 400
-    if not len(re.findall(r"[a-z]", pw)) < 2:
+    if len(re.findall(r"[a-z]", pw)) < 2:
         if re.search(r"[a-z]", pw):
             return flask.jsonify({"valid": False, "reason": "Not enough lowercase letter"}), 400
         else:
